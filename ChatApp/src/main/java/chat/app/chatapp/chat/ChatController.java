@@ -1,13 +1,21 @@
 package chat.app.chatapp.chat;
 
+import lombok.AllArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class ChatController {
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
+@RestController
+@AllArgsConstructor
+@RequestMapping("/ChatMessage")
+
+class ChatController {
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
